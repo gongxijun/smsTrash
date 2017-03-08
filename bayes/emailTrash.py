@@ -35,11 +35,10 @@ class Bayes:
         sms_prob_ham = sms_prob_spam = 1
         for flag, word in enumerate(sms):
             word_prob_spam = word_prob_ham = 0;
-            # 每篇文章包含某词则加一，而不是如果有这个词就加一
             if word in self.sms_value:
                 value = self.sms_value[word]
-                word_prob_spam = float(value[0]) / self.sms_count[0]  # 所有文章中，出现这个为spam的概率
-                word_prob_ham = float(value[1]) / self.sms_count[1]  # 所有文章中，出现这个为healthy的概率
+                word_prob_spam = float(value[0]) / self.sms_count[0]  # 这个词为spam的概率
+                word_prob_ham = float(value[1]) / self.sms_count[1]  # 这个词为healthy的概率
             word_prob_spam = is_zero(word_prob_spam);
             word_prob_ham = is_zero(word_prob_ham);
             ##计算
